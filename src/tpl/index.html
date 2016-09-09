@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="tpl/css/timeline.css" rel="stylesheet" type="text/css" />
+<script src="tpl/js/modernizr.js"></script>
+<script src="tpl/js/jquery-1.8.3.min.js"></script>
+    <style type="text/css">
+        #box{
+            width: 700px;
+            margin: 20px auto;
+            height: 280px;
+        }
+        #form-group{
+            width: 700px;
+            height: 45px;
+            float: left;
+            overflow: hidden;
+        }
+        #form-group div{
+            width: 81px;
+            height: 45px;
+            float: left;
+            text-align: center;
+            line-height: 45px;
+            background: #F0CA45;
+            color: white;
+        }
+        #form-group input{
+            height: 45px;
+            width: 619px;
+            direction: ltr;
+            text-indent: 10px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: #AAAAAA;
+        }
+        #form-group1{
+            width: 700px;
+            height: 160px;
+            float: left;
+            margin-top: 10px;
+        }
+        #form-group1 div{
+            width: 81px;
+            height: 160px;
+            float: left;
+            text-align: center;
+            line-height: 160px;
+            background: #F0CA45;
+            color: white;
+        }
+        #form-group1 textarea{
+            height: 160px;
+            width: 619px;
+            direction: ltr;
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            margin-left: 0px;
+            margin-right: 0px;
+            overflow: auto;
+            resize: none;
+            color: #B2B2B2;
+        }
+        #form-group2{
+            width: 700px;
+            height: 65px;
+            float: left;
+        }
+        #form-group2 input{
+            margin: 10px auto;
+            width: 94px;
+            height: 45px;
+            background: #26ba60;
+            display: block;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            outline: none;
+        }
+        #form-group2 input:hover{
+            background: #23A757;
+        }
+
+    </style>
+</head>
+<body>
+	<header>
+        <div id="box">
+            <form action="" method="post">
+                <div id="form-group">
+                    <div>昵称</div>
+                    <input name="name"  type="text"  placeholder="请输入昵称" >
+                </div>
+                <div id="form-group1">
+                    <div>留言内容</div>
+                    <textarea name="con" cols="10" rows="5" placeholder="亲，你现在感觉咋样？！"></textarea>
+                </div>
+                <div id="form-group2">
+                    <input type="submit" value="提交"/>
+                </div>
+            </form>
+        </div>
+	</header>
+
+	<section id="cd-timeline" class="cd-container">
+        <?php krsort($data);  foreach($data as $k=>$v){ ?>
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="tpl/images/cd-icon-location.svg" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2><?php echo $v["name"]; ?></h2>
+				<p><?php echo $v["con"]; ?></p>
+				<a href="./edit.php?k=<?php echo $k; ?>" class="cd-read-more">我再编辑</a>
+				<span class="cd-date"><?php echo $v["time"]; ?></span>
+                <!-- <span class="cd-date">Feb 14</span> -->
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+        <?php }; ?>
+	</section> <!-- cd-timeline -->
+    <script>
+$(function(){
+	var $timeline_block = $('.cd-timeline-block');
+	//hide timeline blocks which are outside the viewport
+	$timeline_block.each(function(){
+		if($(this).offset().top > $(window).scrollTop()+$(window).height()*0.75) {
+			$(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+		}
+	});
+	//on scolling, show/animate timeline blocks when enter the viewport
+	$(window).on('scroll', function(){
+		$timeline_block.each(function(){
+			if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
+				$(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>
+<div style="display:none">
+	<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6f798e51a1cd93937ee8293eece39b1a' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5718743'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/stat.php%3Fid%3D5718743%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
+	</div>
+

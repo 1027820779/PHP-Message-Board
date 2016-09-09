@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="tpl/css/timeline.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    body{
+        background: #303e49;
+    }
+    #header{
+        height: auto;
+    }
+        #box{
+            width: 700px;
+            margin: 150px auto;
+            height: 280px;
+        }
+        #form-group{
+            width: 700px;
+            height: 45px;
+            float: left;
+            overflow: hidden;
+        }
+        #form-group div{
+            width: 81px;
+            height: 45px;
+            float: left;
+            text-align: center;
+            line-height: 45px;
+            background: #F0CA45;
+            color: white;
+        }
+        #form-group input{
+            height: 45px;
+            width: 619px;
+            direction: ltr;
+            text-indent: 10px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: #AAAAAA;
+        }
+        #form-group1{
+            width: 700px;
+            height: 160px;
+            float: left;
+            margin-top: 10px;
+        }
+        #form-group1 div{
+            width: 81px;
+            height: 160px;
+            float: left;
+            text-align: center;
+            line-height: 160px;
+            background: #F0CA45;
+            color: white;
+        }
+        #form-group1 textarea{
+            height: 160px;
+            width: 619px;
+            direction: ltr;
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            margin-left: 0px;
+            margin-right: 0px;
+            overflow: auto;
+            resize: none;
+            color: #B2B2B2;
+        }
+        #form-group2{
+            width: 700px;
+            height: 65px;
+            float: left;
+        }
+        #form-group2 input{
+            width: 94px;
+            height: 45px;
+            background: #26ba60;
+            display: block;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            outline: none;
+            float: left;
+            margin-top: 10px;
+            margin-left: 150px;
+        }
+        #form-group2 input:hover{
+            background: #23A757;
+        }
+        #form-group2 a{
+            width: 94px;
+            height: 45px;
+            background:#Fa6041;
+            display: block;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            outline: none;
+            text-align: center;
+            line-height: 45px;
+            float: right;
+            margin-top: 10px;
+            margin-right: 150px;
+        }
+        #form-group2 a:hover{
+            background: #D64A2E;
+        }
+        #re{
+            width: 94px;
+            height: 45px;
+            background: #F0CA45;
+            display: block;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            outline: none;
+            text-align: center;
+            line-height: 45px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+	<header id="header">
+        <div id="box">
+            <form action="" method="post">
+                <div id="form-group">
+                    <div>昵称</div>
+                    <input name="name"  type="text"  placeholder="请输入昵称" value="<?php echo $data[$k]["name"]; ?>" >
+                </div>
+                <div id="form-group1">
+                    <div>留言内容</div>
+                    <textarea name="con" cols="10" rows="5" placeholder="亲，你现在感觉咋样？！"><?php echo $data[$k]["con"]; ?></textarea>
+                </div>
+                <div id="form-group2">
+                    <input type="submit" value="保存"/>
+                    <a href="javascript:if(confirm('确认要删除吗'))location.href='./del.php?k=<?php echo $k;?>';">删除</a>
+                </div>
+            </form>
+        </div>
+	</header>
+    <a id="re" href="./index.php">&lt;-返回</a>
+</body>
+</html>
